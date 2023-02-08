@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+fishacquarium.access_user,access_user,fishacquarium.model_user,base.group_user,1,1,1,1
+fishacquarium.access_product,access_product,fishacquarium.model_product,base.group_user,1,1,1,1
+fishacquarium.access_order,access_order,fishacquarium.model_order,base.group_user,1,1,1,1
