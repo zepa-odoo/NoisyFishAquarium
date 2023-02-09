@@ -16,8 +16,60 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
+                <field name="phone_no"/>
+                <field name="email"/>
+                <field name="date_of_birth"/>
+                <field name="user_role"/>
+                <field name="vendors_id" optional="hide"/>
+                <field name="address" optional="hide"/>
             </tree>
         </field>
     </record>
     
+    <record id="fish_user_view_form" model="ir.ui.view">
+        <field name="name">Users</field>
+        <field name="model">user</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <label for="name"/>
+                    <h1><field name="name" placeholder="eg. Zeel Patel"/></h1>
+                    <br/>
+                    <group>
+                        <field name="user_role"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="phone_no"/>
+                            <field name="email"/>
+                        </group>
+                        <group>
+                            <field name="address" placeholder="401-402, Floor 4 IT Tower 3 InfoCity Gate-1, Gandhinagar, Gujarat 382007"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="Expert">
+                            <group>
+                                <group>
+                                    <field name="experience"/>
+                                    <field name="clinic_mail"/>
+                                    <field name="clinic_phone_no"/>
+                                </group>
+                                <group>
+                                    <field name="clinic_address"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="Suppliers">
+                            <label for="vendors_id" />
+                            <field name="vendors_id"/>
+
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
 </odoo>
