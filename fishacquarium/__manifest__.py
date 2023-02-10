@@ -15,11 +15,20 @@
 
     'data':[
       'security/ir.model.access.csv',
-      'views/fishacquarium_menu.xml',
+     
       'views/user_view.xml',
-      'views/product_view.xml',
+      'views/product_aquarium_view.xml',
+      'views/product_category_fish_view.xml',
+      'views/product_category_food_view.xml',
+      'views/product_category_medicine_view.xml',
+      'views/product_category_water_view.xml',
+      'views/product_category_accessories_view.xml',
+      'views/product_vendor_view.xml',
       'views/order_view.xml',
+      'views/product_color_view.xml',
 
+
+      'views/fishacquarium_menu.xml',
     ]   
 
 }

@@ -10,7 +10,7 @@
             </p>
         </field>
     </record>
-    <record id="fish_user_view_tree" model="ir.ui.view">
+    <record id="fish_user_tree_view" model="ir.ui.view">
         <field name="name">Users</field>
         <field name="model">user</field>
         <field name="arch" type="xml">
@@ -26,7 +26,7 @@
         </field>
     </record>
     
-    <record id="fish_user_view_form" model="ir.ui.view">
+    <record id="fish_user_form_view" model="ir.ui.view">
         <field name="name">Users</field>
         <field name="model">user</field>
         <field name="arch" type="xml">
@@ -35,10 +35,12 @@
                     <label for="name"/>
                     <h1><field name="name" placeholder="eg. Zeel Patel"/></h1>
                     <br/>
+                    <div style="margin-top:30px" />
                     <group>
-                        <field name="user_role"/>
+                        <field name="user_role" widget="radio" options="{'horizontal': true}"/>
                     </group>
-                    <group>
+                    
+                    <group string="Contact Details">
                         <group>
                             <field name="phone_no"/>
                             <field name="email"/>
@@ -47,9 +49,11 @@
                             <field name="address" placeholder="401-402, Floor 4 IT Tower 3 InfoCity Gate-1, Gandhinagar, Gujarat 382007"/>
                         </group>
                     </group>
+                    <div style="margin-top:50px" />
                     <notebook>
                         <page name="Expert">
                             <group>
+                                
                                 <group>
                                     <field name="experience"/>
                                     <field name="clinic_mail"/>

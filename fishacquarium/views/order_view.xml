@@ -10,7 +10,7 @@
             </p>
         </field>
     </record>
-    <record id="fish_order_view_tree" model="ir.ui.view">
+    <record id="fish_order_tree_view" model="ir.ui.view">
         <field name="name">Orders</field>
         <field name="model">order</field>
         <field name="arch" type="xml">

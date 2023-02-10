@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <menuitem id="fish_root" name="Noisy Fish Acquarium">
+        
         <menuitem id="fish_user_menu" name="Users">
             <menuitem id="fish_user_action" name="Customers" action="fish_user_loader"/>
+            <menuitem id="fish_vendor_action" name="Vendors" action="fish_product_vendor_loader"/>
         </menuitem>
-        <menuitem id="fish_product_menu" name="Products">
-            <menuitem id="fish_product_action" name="Products" action="fish_product_loader"/>
-        </menuitem>
-        <menuitem id="fish_orders_menu" name="Orders">
-            <menuitem id="fish_orders_action" name="Orders" action="fish_orders_loader"/>
+        
+        
+        <menuitem id="fish_product_action" name="Product" action="fish_product_loader"/>
+            
+        
+        <menuitem id="fish_category_menu" name="Category">
+            <menuitem id="fish_category_fish_action" name="Fish " action="fish_product_category_fish_loader"/>
+            <menuitem id="fish_category_food_action" name="Food " action="fish_product_category_food_loader"/>
+            <menuitem id="fish_category_medicine_action" name="Medicine " action="fish_product_category_medicine_loader"/>
+            <menuitem id="fish_category_water_action" name="Water " action="fish_product_category_water_loader"/>
+            <menuitem id="product_color_action" name="Colors " action="fish_product_color_loader"/>
+            <menuitem id="fish_category_accessories_action" name="Accessories Category" action="fish_product_category_accessories_loader"/>
         </menuitem>
     </menuitem>
 </odoo>

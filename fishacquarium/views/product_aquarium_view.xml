@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="fish_product_loader" model="ir.actions.act_window">
+        <field name="name">Product</field>
+        <field name="res_model">product.aquarium</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a record
+            </p>
+        </field>
+    </record>
+    <record id="fish_product_tree_view" model="ir.ui.view">
+        <field name="name">Products</field>
+        <field name="model">product.aquarium</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="product_category"/>
+                <field name="product_price"/>
+                <field name="product_color"/>
+                <field name="vendor_name"/>
+                <field name="product_description" optional="hide"/>
+                <field name="product_weight" optional="show"/>
+            </tree>
+        </field>
+    </record>
+    <record id="fish_product_form_view" model="ir.ui.view">
+        <field name="name">Products</field>
+        <field name="model">product.aquarium</field>
+        <field name="arch" type="xml">  
+            
+            <form>
+                <sheet>
+                    <label for="name"/>
+                    <h1>
+                        <field name="name" nolabel="1"/>
+                        
+                    </h1>
+                    <div style="position: absolute;right: 40px;top:15px">
+                        <field name="product_img" widget="image" class="oe_right oe_avatar" nolabel="1"/>
+                    </div>
+                        
+                    
+                    <div style="margin-top:30px"/>
+                    <group>
+                        <group>
+                            <field name="product_description"/>
+                            <field name="product_category" widget="radio" options="{'horizontal': true}"/>
+                        </group>
+                        <group>
+                            <field name="product_price"/>
+                            <field name="product_color" widget="many2many_tags"/>
+                            <field name="vendor_name"/> 
+                            <!-- widget="color" -->
+                            
+                        </group>
+                    </group>
+                    <div style="margin-top:30px"/>
+                    <notebook>
+                        <page string="Artificial">
+                            <group>
+                                <group string="Type of Product">
+                                    <field name="product_category_id"/>
+                                </group>
+                                <group string="Dimension of Product">
+                                    <field name="product_weight"/>
+                                    <field name="product_height"/>
+                                    <field name="product_length"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Natural">
+                            <group>
+                                <group>
+                                    <field name="product_fish_category_id"/>
+                                    <field name="product_fish_food_id"/>
+                                    <field name="product_fish_medicine_id"/>
+                                </group>
+                                <group>
+                                    <field name="product_fish_lifespan"/>
+                                    <field name="product_fish_size"/>
+                                </group>
+                                <group>
+                                    <field name="product_fish_water_id"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+</odoo>

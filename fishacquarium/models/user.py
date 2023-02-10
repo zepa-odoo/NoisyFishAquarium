@@ -15,8 +15,8 @@ class User(models.Model):
         help  = "Select which type of user"
         )
     
-    vendors_id = fields.Integer(string="Company Details")
-
+    # vendors_id = fields.Integer(string="Company Details")
+    vendors_id = fields.Many2one('product.vendor',string="Company Details")
     experience = fields.Integer()
     clinic_address = fields.Text(string="Clinic address")
     clinic_phone_no = fields.Integer(string="Clinic Phone No")
