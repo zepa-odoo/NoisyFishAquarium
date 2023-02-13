@@ -6,4 +6,4 @@ class ProductCategoryWater(models.Model):
 
     name = fields.Char(required=True,string="Type")
     water_ph = fields.Integer(string="PH")
-    water_temperature = fields.Integer(string="Temperature")
+    water_temperature = fields.Float(string="Temperature")

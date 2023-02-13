@@ -37,4 +37,26 @@
             </form>
         </field>
     </record>
+
+    <record id="fish_product_category_water_search_view" model="ir.ui.view">
+        <field name="name">Water Category</field>
+        <field name="model">product.category.water</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="water_ph"/>
+                <field name="water_temperature"/>
+                <group>
+                    <filter string="Water Type" name="name" context="{'group_by':'name'}"/>
+                </group>
+                <group>
+                    <filter string="Water PH" name="water_ph" context="{'group_by':'water_ph'}"/>
+                </group>    
+                <group>
+                    <filter string="Water Temperature" name="water_temperature" context="{'group_by':'water_temperature'}"/>
+                </group>
+                
+            </search>
+        </field>
+    </record>
 </odoo>

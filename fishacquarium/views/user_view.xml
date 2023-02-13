@@ -20,7 +20,7 @@
                 <field name="email"/>
                 <field name="date_of_birth"/>
                 <field name="user_role"/>
-                <field name="vendors_id" optional="hide"/>
+                <field name="vendor_id" optional="hide"/>
                 <field name="address" optional="hide"/>
             </tree>
         </field>
@@ -65,14 +65,38 @@
                             </group>
                         </page>
                         <page name="Suppliers">
-                            <label for="vendors_id" />
-                            <field name="vendors_id"/>
+                            <label for="vendor_id" />
+                            <field name="vendor_id"/>
 
                         </page>
                     </notebook>
                 </sheet>
             </form>
 
+        </field>
+    </record>
+
+    <record id="fish_user_search_view" model="ir.ui.view">
+        <field name="name">Users</field>
+        <field name="model">user</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="address"/>
+                <field name="vendor_id"/>
+                <field name="phone_no"/>
+                <filter name="user_role" string="Customer" domain="[('user_role','=','customer')]"/>
+                <filter name="user_role" string="Expert" domain="[('user_role','=','expert')]"/>
+                <filter name="user_role" string="Employee" domain="[('user_role','=','employee')]"/>
+                <group>
+                    <filter name="user_role" string="User Type" context="{'group_by':'user_role'}"/>
+                </group>
+                <group>
+                    <filter name="experience" string="Experiance" context="{'group_by':'experience'}"/>
+                </group>
+
+            </search>
         </field>
     </record>
 

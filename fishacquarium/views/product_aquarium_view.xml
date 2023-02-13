@@ -18,10 +18,11 @@
                 <field name="name"/>
                 <field name="product_category"/>
                 <field name="product_price"/>
-                <field name="product_color"/>
+                <field name="product_color_ids"/>
                 <field name="vendor_name"/>
                 <field name="product_description" optional="hide"/>
                 <field name="product_weight" optional="show"/>
+                <field name="product_img" widget="image" optional="hide"/>
             </tree>
         </field>
     </record>
@@ -46,11 +47,12 @@
                     <group>
                         <group>
                             <field name="product_description"/>
+                            <field name="product_quantity"/>
                             <field name="product_category" widget="radio" options="{'horizontal': true}"/>
                         </group>
                         <group>
                             <field name="product_price"/>
-                            <field name="product_color" widget="many2many_tags"/>
+                            <field name="product_color_ids" widget="many2many_tags"/>
                             <field name="vendor_name"/> 
                             <!-- widget="color" -->
                             
@@ -75,14 +77,15 @@
                                 <group>
                                     <field name="product_fish_category_id"/>
                                     <field name="product_fish_food_id"/>
-                                    <field name="product_fish_medicine_id"/>
+                                    <field name="product_fish_medicine_ids" widget="many2many_tags"/>
                                 </group>
                                 <group>
                                     <field name="product_fish_lifespan"/>
                                     <field name="product_fish_size"/>
+                                    <field name="product_suitable_fish_ids" widget="many2many_tags"/>
                                 </group>
                                 <group>
-                                    <field name="product_fish_water_id"/>
+                                    <field name="product_fish_water_ids"/>
                                 </group>
                             </group>
                         </page>

@@ -45,8 +45,34 @@
                             <field name="brand_name"/>
                         </group>
                     </group>
+                    <group string="Foundation Details">
+                        <field name="company_year"/>
+                        <field name="experiance"/>
+                        <field name="description"/>
+                    </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+    <record id="fish_product_vendor_search_view" model="ir.ui.view">
+        <field name="name">Vendor</field>
+        <field name="model">product.vendor</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="product_production_type"/>
+                <field name="brand_name"/>
+                <field name="company_address" optional="hide"/>
+                <filter name="product_production_type" string="Natural Product" domain="[('product_production_type','=','natural_product')]"/>
+                <filter name="product_production_type" string="Artificial Product" domain="[('product_production_type','=','artificial_product')]"/>
+                <group>
+                    <filter name="product_production_type" string="Production Type" context="{'group_by':'product_production_type'}"/>
+                </group>
+                <group>
+                    <filter name="experiance" string="Experiance" context="{'group_by':'experiance'}"/>
+                </group>
+
+            </search>
         </field>
     </record>
 </odoo>

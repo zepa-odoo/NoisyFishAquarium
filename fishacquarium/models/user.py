@@ -6,7 +6,7 @@ class User(models.Model):
 
     name = fields.Char(required=True, string="Name")
     address = fields.Text(string="Address")
-    phone_no = fields.Integer(string="Phone Number")
+    phone_no = fields.Char(string="Phone Number")
     email = fields.Char(string="Email")
     date_of_birth = fields.Date(string="Date of Birth")
     user_role = fields.Selection(
@@ -15,11 +15,12 @@ class User(models.Model):
         help  = "Select which type of user"
         )
     
-    # vendors_id = fields.Integer(string="Company Details")
-    vendors_id = fields.Many2one('product.vendor',string="Company Details")
-    experience = fields.Integer()
+    # vendors vendor link
+    vendor_id = fields.Many2one('product.vendor',string="Company Details")
+    #doctor details
+    experience = fields.Integer(required=True)
     clinic_address = fields.Text(string="Clinic address")
-    clinic_phone_no = fields.Integer(string="Clinic Phone No")
+    clinic_phone_no = fields.Char(string="Clinic Phone No")
     clinic_mail = fields.Char(string="Clinic Email")
 
 
