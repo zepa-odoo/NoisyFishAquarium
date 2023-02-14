@@ -95,4 +95,57 @@
         </field>
     </record>
     
+    <record id="fish_products_search_view" model="ir.ui.view">
+        <field name="name">Product</field>
+        <field name="model">product.aquarium</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="product_category"/>
+                <field name="product_price"/>
+                <field name="product_color_ids"/>
+                <field name="vendor_name"/>
+                <field name="product_description"/>
+                <field name="product_weight"/>
+                <field name="product_height"/>
+                <field name="product_length"/>
+                <field name="product_fish_lifespan"/>
+                <field name="product_fish_size"/>
+                <field name="product_fish_water_ids"/>
+                <field name="product_fish_category_id"/>                    
+                <field name="product_fish_food_id"/>
+                <field name="product_fish_medicine_ids"/>
+                <filter name="product_category" string="Artificial Product" domain="[('product_category','=','artificial_product')]"/>
+                <filter name="product_category" string="Natural Product" domain="[('product_category','=','natural_product')]"/>
+                <group>
+                    <filter name="product_category" string="Product Type" context="{'group_by':'product_category'}"/>
+                </group>
+                <group>
+                    <filter name="product_quantity" string="Product Quantity" context="{'group_by':'product_quantity'}"/>
+                </group>
+                <group>
+                    <filter name="product_category_id" string="Artificial Product Category" context="{'group_by':'product_category_id'}"/>
+                </group>
+                <group>
+                    <filter name="product_weight" string="Product Weight" context="{'group_by':'product_weight'}"/>
+                    <filter name="product_height" string="Product Height" context="{'group_by':'product_height'}"/>
+                    <filter name="product_length" string="Product Length" context="{'group_by':'product_length'}"/>
+                </group>
+                <group>
+                    <filter name="product_color_ids" string="Color" context="{'group_by':'product_color_ids'}"/>
+                </group>
+                <group>
+                    <filter name="product_fish_water_ids" string="Water type" context="{'group_by':'product_fish_water_ids'}"/>
+                </group>
+                <group>
+                    <filter name="product_fish_category_id" string="Fish Type" context="{'group_by':'product_fish_category_id'}"/>
+                    <filter name="product_fish_food_id" string="Fish Food" context="{'group_by':'product_fish_food_id'}"/>
+                    <filter name="product_fish_medicine_ids" string="Medicines" context="{'group_by':'product_fish_medicine_ids'}"/>
+                    <filter name="product_fish_lifespan" string="Fish Maximum Age" context="{'group_by':'product_weight'}"/>
+                    <filter name="product_fish_size" string="Fish Size" context="{'group_by':'product_fish_size'}"/>
+
+                </group>
+            </search>
+        </field>
+    </record>
 </odoo>
