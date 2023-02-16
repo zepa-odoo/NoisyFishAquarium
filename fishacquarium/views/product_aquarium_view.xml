@@ -48,12 +48,15 @@
                         <group>
                             <field name="product_description"/>
                             <field name="product_quantity"/>
+                            <!-- horizonatal : use to set data in horizontal manner-->
                             <field name="product_category" widget="radio" options="{'horizontal': true}"/>
                         </group>
                         <group>
                             <field name="product_price"/>
-                            <field name="product_color_ids" widget="many2many_tags"/>
+                            <!-- color_field : use to apply tag color  -->
+                            <field name="product_color_ids" widget="many2many_tags"  options="{'color_field':'color_value'}"/>
                             <field name="vendor_name"/> 
+                            
                             <!-- widget="color" -->
                             
                         </group>
@@ -63,7 +66,9 @@
                         <page string="Artificial">
                             <group>
                                 <group string="Type of Product">
-                                    <field name="product_category_id"/>
+                                    <!-- no_quick_create : use to disable create new record option
+                                         no_create_edit : use to disable create and edit record option -->
+                                    <field name="product_category_id" options="{'no_quick_create': True,'no_create_edit':True}"/>
                                 </group>
                                 <group string="Dimension of Product">
                                     <field name="product_weight"/>
@@ -75,7 +80,7 @@
                         <page string="Natural">
                             <group>
                                 <group>
-                                    <field name="product_fish_category_id"/>
+                                    <field name="product_fish_category_id" options="{'no_quick_create': True,'no_create_edit':True}"/>
                                     <field name="product_fish_food_id"/>
                                     <field name="product_fish_medicine_ids" widget="many2many_tags"/>
                                 </group>

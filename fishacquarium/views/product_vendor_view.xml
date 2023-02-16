@@ -32,6 +32,10 @@
                 <sheet>
                     <label for="name" string="Vendor name"/>
                     <h1><field name="name"/></h1>
+                    <div style="position: absolute;right: 40px;top:15px">
+                        <field name="brand_img" widget="image" class="oe_right oe_avatar" nolabel="1"/>
+                    </div>
+                    
                     <div style="margin-top:30px" />
                     
                     <group>
