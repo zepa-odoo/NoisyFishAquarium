@@ -14,7 +14,7 @@
         <field name="name">Vendor</field>
         <field name="model">product.vendor</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree decoration-info ="product_production_type == 'natural_product'" decoration-warning ="product_production_type == 'artificial_product'" >
                 <field name="name"/>
                 <field name="phone_no"/>
                 <field name="company_email"/>

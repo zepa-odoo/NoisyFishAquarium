@@ -14,11 +14,11 @@
         <field name="name">Products</field>
         <field name="model">product.aquarium</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree decoration-info ="product_category == 'natural_product'" decoration-warning ="product_category == 'artificial_product'">
                 <field name="name"/>
                 <field name="product_category"/>
                 <field name="product_price"/>
-                <field name="product_color_ids"/>
+                <field name="product_color_ids" widget="many2many_tags"/>
                 <field name="vendor_name"/>
                 <field name="product_description" optional="hide"/>
                 <field name="product_weight" optional="show"/>
@@ -62,8 +62,8 @@
                         </group>
                     </group>
                     <div style="margin-top:30px"/>
-                    <notebook>
-                        <page string="Artificial">
+                    <notebook attrs="{'invisible':[('product_category','==', False)]}">
+                        <page string="Artificial" attrs="{'invisible':[('product_category','not in', 'artificial_product')]}">
                             <group>
                                 <group string="Type of Product">
                                     <!-- no_quick_create : use to disable create new record option
@@ -77,7 +77,7 @@
                                 </group>
                             </group>
                         </page>
-                        <page string="Natural">
+                        <page string="Natural" attrs="{'invisible':[('product_category','not in', 'natural_product')]}">
                             <group>
                                 <group>
                                     <field name="product_fish_category_id" options="{'no_quick_create': True,'no_create_edit':True}"/>
