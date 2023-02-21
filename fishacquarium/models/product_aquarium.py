@@ -4,7 +4,7 @@ class ProductAquarium(models.Model):
     _name = "product.aquarium"
     _description = "Products for acquarium"
 
-    vendor_name = fields.Many2one('product.vendor',string="Vendor Name", required=True)
+    
     name = fields.Char(required = True, string="Product Title")
     product_description = fields.Text(string="Product Description")
     product_category = fields.Selection(
@@ -12,6 +12,12 @@ class ProductAquarium(models.Model):
         selection = [('natural_product','Natural Product'),('artificial_product','Artificial Product')],
         help  = "Select which type of product",
         required=True
+        )
+    vendor_name = fields.Many2one(
+        'product.vendor',
+        string="Vendor Name", 
+        required=True,
+        domain="['|',('product_production_type','=',product_category),('product_production_type','=','both')]"
         )
     product_quantity = fields.Integer(string="Avaliable Product")
 

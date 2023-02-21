@@ -3,7 +3,7 @@
     <record id="fish_product_loader" model="ir.actions.act_window">
         <field name="name">Product</field>
         <field name="res_model">product.aquarium</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create a record
@@ -11,10 +11,10 @@
         </field>
     </record>
     <record id="fish_product_tree_view" model="ir.ui.view">
-        <field name="name">Products</field>
+        <field name="name">Products.list</field>
         <field name="model">product.aquarium</field>
         <field name="arch" type="xml">
-            <tree decoration-info ="product_category == 'natural_product'" decoration-warning ="product_category == 'artificial_product'">
+            <tree>
                 <field name="name"/>
                 <field name="product_category"/>
                 <field name="product_price"/>
@@ -27,7 +27,7 @@
         </field>
     </record>
     <record id="fish_product_form_view" model="ir.ui.view">
-        <field name="name">Products</field>
+        <field name="name">Products.form</field>
         <field name="model">product.aquarium</field>
         <field name="arch" type="xml">  
             
@@ -52,10 +52,16 @@
                             <field name="product_category" widget="radio" options="{'horizontal': true}"/>
                         </group>
                         <group>
-                            <field name="product_price"/>
+                            
+                            <!-- <field name="product_price"/> -->
+                            
+                                
+                                
+                                <field name="product_price" class="fa fa-inr"/>
+                            
                             <!-- color_field : use to apply tag color  -->
                             <field name="product_color_ids" widget="many2many_tags"  options="{'color_field':'color_value'}"/>
-                            <field name="vendor_name"/> 
+                            <field name="vendor_name" options= "{ 'no_quick_create':True, 'no_create_edit':True }" placeholder="please firstly select Product Category"/> 
                             
                             <!-- widget="color" -->
                             
@@ -63,7 +69,7 @@
                     </group>
                     <div style="margin-top:30px"/>
                     <notebook attrs="{'invisible':[('product_category','==', False)]}">
-                        <page string="Artificial" attrs="{'invisible':[('product_category','not in', 'artificial_product')]}">
+                        <page string="Artificial" attrs="{'invisible':[('product_category','in', 'natural_product')]}">
                             <group>
                                 <group string="Type of Product">
                                     <!-- no_quick_create : use to disable create new record option
@@ -77,12 +83,12 @@
                                 </group>
                             </group>
                         </page>
-                        <page string="Natural" attrs="{'invisible':[('product_category','not in', 'natural_product')]}">
+                        <page string="Natural" attrs="{'invisible':[('product_category','in', 'artificial_product')]}">
                             <group>
                                 <group>
-                                    <field name="product_fish_category_id" options="{'no_quick_create': True,'no_create_edit':True}"/>
-                                    <field name="product_fish_food_id"/>
-                                    <field name="product_fish_medicine_ids" widget="many2many_tags"/>
+                                    <field name="product_fish_category_id" />
+                                    <field name="product_fish_food_id" options="{'no_quick_create': True,'no_create_edit':True}"/>
+                                    <field name="product_fish_medicine_ids" widget="many2many_tags" options = "{'no_quick_create':True,'no_create_edit':True}"/>
                                 </group>
                                 <group>
                                     <field name="product_fish_lifespan"/>
@@ -101,7 +107,7 @@
     </record>
     
     <record id="fish_products_search_view" model="ir.ui.view">
-        <field name="name">Product</field>
+        <field name="name">Product.search</field>
         <field name="model">product.aquarium</field>
         <field name="arch" type="xml">
             <search>
@@ -146,11 +152,46 @@
                     <filter name="product_fish_category_id" string="Fish Type" context="{'group_by':'product_fish_category_id'}"/>
                     <filter name="product_fish_food_id" string="Fish Food" context="{'group_by':'product_fish_food_id'}"/>
                     <filter name="product_fish_medicine_ids" string="Medicines" context="{'group_by':'product_fish_medicine_ids'}"/>
-                    <filter name="product_fish_lifespan" string="Fish Maximum Age" context="{'group_by':'product_weight'}"/>
+                    <filter name="product_fish_lifespan" string="Fish Maximum Age" context="{'group_by':'product_fish_lifespan'}"/>
                     <filter name="product_fish_size" string="Fish Size" context="{'group_by':'product_fish_size'}"/>
 
                 </group>
             </search>
+        </field>
+    </record>
+
+    <record id="fish_product_aquarium_kanban_view" model="ir.ui.view">
+        <field name="name">Product.kanban</field>
+        <field name="model">product.aquarium</field>
+        <field name="arch" type="xml">
+            <kanban class="o_res_partner_kanban">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="product_img"/>
+                <field name="product_price"/>
+                <field name="product_category"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div 
+                        t-attf-class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img alt="Avatar" t-att-src="kanban_image('product.aquarium', 'product_img',record.id.value)"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </strong>
+                                <div t-if="record.product_category.value">
+                                    <t t-esc="record.product_category.value"/>
+                                </div>
+                                <div t-if="record.product_price.value" class="fa fa-inr">
+                                    <t t-esc="record.product_price.value"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
 </odoo>

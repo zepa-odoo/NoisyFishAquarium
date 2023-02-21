@@ -18,7 +18,10 @@ class UserUser(models.Model):
     profile_img =  fields.Image(string="Profile Image", max_width=70, max_height=70)
     
     # vendors vendor link
-    vendor_id = fields.Many2one('product.vendor',string="Company Details")
+    vendor_id = fields.Many2one(
+        'product.vendor',
+        string="Company Details",
+        )
     vendor_address = fields.Text(string="Company Address", compute="_compute_vendor_address")
     vendor_email = fields.Char(string="Company Email Id", compute="_compute_vendor_email")
     vendor_phone_no = fields.Char(string="Company Contact Number",compute="_compute_vendor_phone_no")
@@ -53,8 +56,8 @@ class UserUser(models.Model):
     def _compute_color(self):
         for record in self:
             if (record.user_role == 'customer'):
-                record.color = 1
-            elif(record.user_role == 'expert'):
-                record.color = 2
-            elif(record.user_role == 'employee'):
                 record.color = 3
+            elif(record.user_role == 'expert'):
+                record.color = 11
+            elif(record.user_role == 'employee'):
+                record.color = 9

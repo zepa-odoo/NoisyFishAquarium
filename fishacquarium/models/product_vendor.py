@@ -12,14 +12,18 @@ class ProductVendor(models.Model):
     brand_name = fields.Char(string="Brand Name")
     description = fields.Text(string="Foundation Description")
     brand_img = fields.Image(string="Brand Image", max_width=70, max_height=70)
-    experiance = fields.Integer(string="Experiance",compute="_compute_experiance")
+    experiance = fields.Integer(string="Experiance",compute="_compute_experiance", store=True)
     product_production_type = fields.Selection(
         string = "Production Type",
-        selection = [('natural_product','Natural Product'),('artificial_product','Artificial Product')],
+        selection = [('natural_product','Natural Product'),('artificial_product','Artificial Product'),('both','Both Artificial & Natural')],
         help  = "Select which type of product produce"
         )
     company_year=fields.Selection(selection='years_selection',
         string="Foundation Year")
+    
+    #extra fields
+    color = fields.Integer(string="Color", compute="_compute_color")
+
     
     
     def years_selection(self):
@@ -35,4 +39,13 @@ class ProductVendor(models.Model):
                 record.experiance = fields.date.today().year-int(record.company_year)
             else:
                 record.experiance=0
-                
+    
+    @api.depends('product_production_type')
+    def _compute_color(self):
+        for record in self:
+            if(record.product_production_type == 'natural_product'):
+                record.color = 4
+            elif(record.product_production_type == 'artificial_product'):
+                record.color = 7
+            elif(record.product_production_type == 'both'):
+                record.color = 5

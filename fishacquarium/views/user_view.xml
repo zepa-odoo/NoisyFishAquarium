@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <record id="fish_user_loader" model="ir.actions.act_window">
-        <field name="name">User</field>
+        <field name="name">Aquarium Users</field>
         <field name="res_model">user.users</field>
         <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{'search_default_user_role':False}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create a record
@@ -11,12 +12,12 @@
         </field>
     </record>
     <record id="fish_user_tree_view" model="ir.ui.view">
-        <field name="name">Users</field>
+        <field name="name">Users.list</field>
         <field name="model">user.users</field>
         <field name="arch" type="xml">
-            <tree decoration-muted = "user_role == 'customer'"
+            <tree decoration-danger = "user_role == 'employee'"
                   decoration-info = "user_role == 'expert'"
-                  decoration-warning = "user_role == 'employee'" >
+                  decoration-warning = "user_role == 'customer'" >
                 <field name="name"/>
                 <field name="phone_no"/>
                 <field name="email"/>
@@ -32,7 +33,7 @@
     </record>
     
     <record id="fish_user_form_view" model="ir.ui.view">
-        <field name="name">Users</field>
+        <field name="name">Users.form</field>
         <field name="model">user.users</field>
         <field name="arch" type="xml">
             <form>
@@ -97,7 +98,7 @@
     </record>
 
     <record id="fish_user_search_view" model="ir.ui.view">
-        <field name="name">Users</field>
+        <field name="name">Users.search</field>
         <field name="model">user.users</field>
         <field name="arch" type="xml">
             <search>
@@ -112,9 +113,9 @@
                 <group>
                     <filter name="user_role" string="User Type" context="{'group_by':'user_role'}"/>
                 </group>
-                <group>
+                <!-- <group>
                     <filter name="experience" string="Experiance" context="{'group_by':'experience'}"/>
-                </group>
+                </group> -->
 
             </search>
         </field>
@@ -140,14 +141,14 @@
                             </div>
                             <div class="oe_kanban_details">
                                 <strong class="o_kanban_record_title">
-                                <field name="name"/>
+                                    <field name="name"/>
                                 </strong>
-                            <div t-if="record.phone_no.value">
+                                <div t-if="record.phone_no.value">
                                     <t t-esc="record.phone_no.value"/>
-                            </div>
+                                </div>
                                 <div t-if="record.email.value">
                                     <t t-esc="record.email.value"/>
-                            </div>
+                                </div>
                             </div>
                         </div>
                     </t>
