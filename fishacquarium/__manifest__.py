@@ -15,7 +15,7 @@
 
     'data':[
       'security/ir.model.access.csv',
-     
+      'data/ir_sequence_data.xml',
       'views/user_view.xml',
       'views/product_aquarium_view.xml',
       'views/product_category_fish_view.xml',

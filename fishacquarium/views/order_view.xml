@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="fish_orders_loader" model="ir.actions.act_window">
-        <field name="name">Orders</field>
-        <field name="res_model">order</field>
+    <record id="fish_product_orders_loader" model="ir.actions.act_window">
+        <field name="name">Product Order</field>
+        <field name="res_model">product.order</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -10,13 +10,56 @@
             </p>
         </field>
     </record>
-    <record id="fish_order_tree_view" model="ir.ui.view">
-        <field name="name">Orders</field>
-        <field name="model">order</field>
+    <record id="fish_product_order_tree_view" model="ir.ui.view">
+        <field name="name">Product.Order.list</field>
+        <field name="model">product.order</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
+                <field name="create_date"/>
+                <field name="user_id"/>
+                <field name="totel_quantity"/>
+                <field name="totel_price"/>
+                <field name="state" string = "Status"/>
             </tree>
+        </field>
+    </record>
+    <record id="fish_product_order_form_view" model="ir.ui.view">
+        <field name="name">Product Order</field>
+        <field name="model">product.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" string = "Status" widget="statusbar"/>
+                    <button class="oe_highlight" name="action_submit" string="Submit" type="object"/>
+                </header>
+                <sheet>
+                    <h1><field name="name"/></h1>
+                    <div style="margin-top:30px"/>
+                    <group>
+                        <field name="user_id"/>
+                        <field name="create_date"/>
+                    </group>
+                    <div style="margin-top:30px"/>
+                    <notebook>
+                        <page string="Products">
+                            <field name="product_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="product_description"/>
+                                    <field name="product_quantity"/>
+                                    <field name="product_price" string="Unit Price"/>
+                                </tree>
+                            </field>
+                            <group class="oe_right">
+                                <field name="totel_price" />
+                            </group>
+                                
+                            
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
         </field>
     </record>
     

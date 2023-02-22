@@ -20,6 +20,7 @@ class ProductAquarium(models.Model):
         domain="['|',('product_production_type','=',product_category),('product_production_type','=','both')]"
         )
     product_quantity = fields.Integer(string="Avaliable Product")
+    
 
     product_category_id = fields.Many2one('product.category.accessories',string="Artificial Product Category")
     product_price = fields.Float(string="Price")

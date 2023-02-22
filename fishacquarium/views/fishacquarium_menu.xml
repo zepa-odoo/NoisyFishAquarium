@@ -7,10 +7,6 @@
             <menuitem id="fish_vendor_action" name="Vendors" action="fish_product_vendor_loader"/>
         </menuitem>
         
-        
-        <menuitem id="fish_product_action" name="Product" action="fish_product_loader"/>
-            
-        
         <menuitem id="fish_category_menu" name="Category">
             <menuitem id="fish_category_fish_action" name="Fish " action="fish_product_category_fish_loader"/>
             <menuitem id="fish_category_food_action" name="Food " action="fish_product_category_food_loader"/>
@@ -19,5 +15,9 @@
             <menuitem id="product_color_action" name="Colors " action="fish_product_color_loader"/>
             <menuitem id="fish_category_accessories_action" name="Accessories Category" action="fish_product_category_accessories_loader"/>
         </menuitem>
+
+        <menuitem id="fish_product_action" name="Product" action="fish_product_loader"/>
+        <menuitem id="fish_product_order_action" name="Order" action="fish_product_orders_loader"/>
+
     </menuitem>
 </odoo>

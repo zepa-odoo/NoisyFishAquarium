@@ -1,6 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 fishacquarium.access_user_users,access_user_users,fishacquarium.model_user_users,base.group_user,1,1,1,1
-fishacquarium.access_order,access_order,fishacquarium.model_order,base.group_user,1,1,1,1
 fishacquarium.access_product_category_fish,access_product_category_fish,fishacquarium.model_product_category_fish,base.group_user,1,1,1,1
 fishacquarium.access_product_category_food,access_product_category_food,fishacquarium.model_product_category_food,base.group_user,1,1,1,1
 fishacquarium.access_product_category_water,access_product_category_water,fishacquarium.model_product_category_water,base.group_user,1,1,1,1
@@ -9,3 +8,4 @@ fishacquarium.access_product_category_accessories,access_product_category_access
 fishacquarium.access_product_vendor,access_product_vendor,fishacquarium.model_product_vendor,base.group_user,1,1,1,1
 fishacquarium.access_product_aquarium,access_product_aquarium,fishacquarium.model_product_aquarium,base.group_user,1,1,1,1
 fishacquarium.access_product_color,access_product_color,fishacquarium.model_product_color,base.group_user,1,1,1,1
+fishacquarium.access_product_order,access_product_order,fishacquarium.model_product_order,base.group_user,1,1,1,1

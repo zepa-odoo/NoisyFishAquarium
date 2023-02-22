@@ -103,7 +103,7 @@
         <field name="arch" type="xml">
             <search>
                 <field name="name"/>
-                <field name="email"/>
+                <field name="email" widget="email"/>
                 <field name="address"/>
                 <field name="vendor_id"/>
                 <field name="phone_no"/>
@@ -125,7 +125,8 @@
         <field name="name">Users.kanban</field>
         <field name="model">user.users</field>
         <field name="arch" type="xml">
-            <kanban class="o_res_partner_kanban">
+            <!-- record_draggable is use to control drag and drop in kanban view -->
+            <kanban class="o_res_partner_kanban" records_draggable="false">
                 <field name="id"/>
                 <field name="name"/>
                 <field name="profile_img"/>
