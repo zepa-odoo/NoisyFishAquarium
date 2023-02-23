@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="aquarium_root" name="Aquarium" web_icon="fish,static/description/icon.png">
+        <menuitem id = "aquarium_user_menu" name = "User" action="aquarium_user_action" />
+        <menuitem id="aquarium_category_menu" name="Category">
+            <menuitem id="fish_action" name="Fish " action="aquarium_fish_action"/>
+            <menuitem id="food_action" name="Food " action="aquarium_food_action"/>
+            <menuitem id="medicine_action" name="Medicine " action="aquarium_medicine_action"/>
+            <menuitem id="water_action" name="Water " action="aquarium_water_action"/>
+            <menuitem id="color_action" name="Colors " action="aquarium_color_action"/>
+            <menuitem id="accessories_action" name="Accessories Category" action="aquarium_accessories_action"/>
+        </menuitem>
+
+        <menuitem id="fish_product_action" name="Product" action="aquarium_product_action"/>
+
+    </menuitem>
+</odoo>

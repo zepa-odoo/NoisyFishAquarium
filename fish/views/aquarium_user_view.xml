@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="aquarium_user_action" model="ir.actions.act_window">
+        <field name="name">Aquarium Users</field>
+        <field name="res_model">aquarium.user</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="aquarium_user_form_view" model="ir.ui.view">
+        <field name="name">Aquarium Users</field>
+        <field name="model">aquarium.user</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="partner_id">
+                            <form string="demo" >
+                
+                                <field name="name"/>
+                                <field name="email"/>
+                                <field name="mobile"/>
+                                <field name="street"/>
+                                <field name="street2"/>
+                                <field name="city"/>
+                                <field name="zip"/>
+                            
+                            </form>
+                        </field>
+                    </group>
+                    <group>
+                        <field name="user_role" widget="radio" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
