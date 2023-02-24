@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="aquarium_vendor_action" model="ir.actions.act_window">
+        <field name="name">Aquarium Vendor</field>
+        <field name="res_model">aquarium.vendor</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a record
+            </p>
+        </field>
+    </record>
+    <record id="aquarium_vendor_tree_view" model="ir.ui.view">
+        <field name="name">Aquarium Vendor</field>
+        <field name="model">aquarium.vendor</field>
+        <field name="arch" type="xml">
+            <tree >
+                <field name="company_id"/>
+                <field name="product_production_type"/>
+                <field name="company_year"/>
+            </tree>
+        </field>
+    </record>
+    <record id="aquarium_vendor_form_view" model="ir.ui.view">
+        <field name="name">Aquarium Vendor</field>
+        <field name="model">aquarium.vendor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <label for="company_id"/>
+                    <h1>
+                        <field name="company_id"/>
+                    </h1>
+                    <group string="Manifecturing Details">
+                        <field name="product_production_type" widget="radio"/>
+                    </group>
+                    <group string="Foundation Details">
+                        <field name="company_year"/>
+                        <field name="experiance"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="aquarium_vendor_search_view" model="ir.ui.view">
+        <field name="name">Aquarium Vendor</field>
+        <field name="model">aquarium.vendor</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="product_production_type" string="Natural Product" domain="[('product_production_type','=','natural_product')]"/>
+                <filter name="product_production_type" string="Artificial Product" domain="[('product_production_type','=','artificial_product')]"/>
+                <group>
+                    <filter name="product_production_type" string="Production Type" context="{'group_by':'product_production_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

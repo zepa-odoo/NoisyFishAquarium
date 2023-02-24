@@ -27,7 +27,6 @@
       'views/order_view.xml',
       'views/product_color_view.xml',
 
-
       'views/fishacquarium_menu.xml',
     ]   
 

@@ -14,22 +14,87 @@
                 <sheet>
                     <group>
                         <field name="partner_id">
-                            <form string="demo" >
-                
-                                <field name="name"/>
-                                <field name="email"/>
-                                <field name="mobile"/>
-                                <field name="street"/>
-                                <field name="street2"/>
-                                <field name="city"/>
-                                <field name="zip"/>
-                            
-                            </form>
                         </field>
                     </group>
                     <group>
-                        <field name="user_role" widget="radio" />
+                        <field name="user_role" widget="radio" options="{'horizontal': true}"/>
                     </group>
+                    <div style="margin-top:50px" />
+                    <notebook attrs="{'invisible':[('user_role','==', False)]}">
+                        <page name="Expert" attrs="{'invisible':[('user_role','not in', 'expert')]}">
+                            
+                            <group>
+                                
+                                <group>
+                                    <field name="experience"/>
+                                    <field name="clinic_mail"/>
+                                    <field name="clinic_phone_no"/>
+                                </group>
+                                <group>
+                                    <field name="consultancy_fees"/>
+                                    <field name="clinic_address"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="Suppliers" attrs="{'invisible':[('user_role','not in', 'employee')]}">
+                            <group string="Company Details">
+                                <field name="aquarium_vendor_id"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="aquarium_user_tree_view" model="ir.ui.view">
+        <field name="name">Aquarium User</field>
+        <field name="model">aquarium.user</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger = "user_role == 'expert'"
+                  decoration-info = "user_role == 'employee'"
+                  decoration-muted = "user_role == 'customer'" >
+                <field name="partner_id" string="Name"/>
+                
+                <!-- <field name="profile_img" widget="image"/> -->
+                <field name="user_role" />
+                
+                <field name="aquarium_vendor_id" optional="hide"/>
+                
+                <field name="clinic_mail" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="aquarium_user_search_view" model="ir.ui.view">
+        <field name="name">Aquarium User</field>
+        <field name="model">aquarium.user</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="user_role" string="Customer" domain="[('user_role','=','customer')]"/>
+                <filter name="user_role" string="Expert" domain="[('user_role','=','expert')]"/>
+                <filter name="user_role" string="Employee" domain="[('user_role','=','employee')]"/>
+                <group>
+                    <filter name="user_role" string="User Type" context="{'group_by':'user_role'}"/>
+                </group>
+                
+            </search>
+        </field>
+    </record>
+
+    <record id="res_partner_change_form_view" model="ir.ui.view">
+        <field name="name">Res User</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <form string="demo" >
+                <sheet>
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="mobile"/>
+                    <field name="street"/>
+                    <field name="street2"/>
+                    <field name="city"/>
+                    <field name="zip"/>
                 </sheet>
             </form>
         </field>

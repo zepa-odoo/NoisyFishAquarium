@@ -14,3 +14,13 @@ class AquariumUser(models.Model):
         
         )
     
+    experience = fields.Integer(required=True)
+    clinic_address = fields.Text(string="Clinic address")
+    clinic_phone_no = fields.Char(string="Clinic Phone No")
+    clinic_mail = fields.Char(string="Clinic Email")
+    consultancy_fees = fields.Integer(string="Consultancy Fees")
+
+    aquarium_vendor_id = fields.Many2one('aquarium.vendor', string="Company Name")
+
+    
+    

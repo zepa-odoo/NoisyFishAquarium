@@ -11,3 +11,4 @@ class ProductCategoryMedicine(models.Model):
     product_price = fields.Float(string="Price")
     product_img = fields.Image(string="Product Image", max_width=70, max_height=70)
     product_color_id = fields.Many2one('product.color',string="Color")
+    product_aquarium_ids = fields.Many2one('product.aquarium')

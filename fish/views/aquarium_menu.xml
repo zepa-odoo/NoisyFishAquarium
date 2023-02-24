@@ -12,6 +12,7 @@
         </menuitem>
 
         <menuitem id="fish_product_action" name="Product" action="aquarium_product_action"/>
+        <menuitem id = "aquarium_vendor_menu" name = "Vendor" action="aquarium_vendor_action" />
 
     </menuitem>
 </odoo>

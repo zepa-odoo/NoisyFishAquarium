@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <menuitem id="fish_root" name="Noisy Fish Acquarium">
+    <menuitem id="fish_root" name="Noisy Fish Acquarium" sequence="1" web_icon="fishacquarium,static/description/icon.png">
         
         <menuitem id="fish_user_menu" name="Users">
             <menuitem id="fish_user_action" name="Customers" action="fish_user_loader"/>

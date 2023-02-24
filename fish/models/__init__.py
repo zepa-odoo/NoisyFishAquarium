@@ -6,3 +6,4 @@ from . import product_category_food
 from . import product_category_medicine
 from . import product_category_water
 from . import product_color
+from . import aquarium_vendor
