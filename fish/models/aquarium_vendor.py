@@ -8,6 +8,9 @@ class AquariumVendor(models.Model):
 
     company_id = fields.Many2one("res.company")
 
+    phone_no= fields.Char(string="Contact No(M)", related = "company_id.phone", store=True)
+    email = fields.Char(string="Email", related = "company_id.email", store=True)
+
     product_production_type = fields.Selection(
         string = "Production Type",
         selection = [('natural_product','Natural Product'),('artificial_product','Artificial Product'),('both','Both Artificial & Natural')],

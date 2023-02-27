@@ -32,7 +32,7 @@ class ProductAquarium(models.Model):
     product_quantity = fields.Integer(string="Avaliable Product")
     active = fields.Boolean("Active",default=True)
     
-    product_category_id = fields.Many2one('product.category.accessories',string="Artificial Product Category")
+    product_category_accessories_id = fields.Many2one('product.category',string="accessories category",  domain = "[('main_category','=','accessories')]")
     product_price = fields.Float(string="Price")
     product_weight = fields.Float(string="Weight")
     product_height = fields.Float(string="height")
@@ -40,13 +40,13 @@ class ProductAquarium(models.Model):
     product_img = fields.Image(required=True, string="Product Image", max_width=70, max_height=70)
     product_color_ids = fields.Many2many('product.color',string="Color")
 
-    product_fish_category_id  = fields.Many2one('product.category.fish',string = "Fish Category")
-    product_fish_food_id  = fields.Many2one('product.category.food',string = "Fish Food Category")
+    product_category_fish_id = fields.Many2one('product.category',string="fish category", domain = "[('main_category','=','fish')]")
+    product_category_food_id = fields.Many2one('product.category',string="food category",  domain = "[('main_category','=','food')]")
     product_fish_medicine_ids  = fields.One2many('product.category.medicine','product_aquarium_ids',string = "Fish Medicine Category")
     product_fish_water_ids  = fields.Many2many('product.category.water',string = "Water Type")
     product_fish_lifespan  = fields.Integer(string = "Life Line")
     product_fish_size = fields.Integer(string = "Fish Size")
-    product_suitable_fish_ids = fields.Many2many("product.category.fish", string="Compatible Fishes", compute="_compute_product_suitable_fish_ids", readonly=False)
+    product_category_compatible_fish_id = fields.Many2many("product.category", string="Compatible Fishes", domain = "[('main_category','=','fish')]", compute="_compute_product_suitable_fish_ids", readonly=False)
 
     _sql_constraints = [
         (
@@ -56,10 +56,10 @@ class ProductAquarium(models.Model):
         )
     ]
 
-    @api.depends('product_fish_category_id')
+    @api.depends('product_category_fish_id')
     def _compute_product_suitable_fish_ids(self):
         for record in self:
-            record.product_suitable_fish_ids = record.product_fish_category_id
+            record.product_category_compatible_fish_id = record.product_category_fish_id
 
     @api.constrains('product_quantity')
     def _check_selling_price(self):

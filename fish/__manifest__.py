@@ -18,6 +18,7 @@
         'views/product_category_accessories_view.xml',
         'views/product_color_view.xml',
         'views/aquarium_vendor_view.xml',
+        'views/product_category.xml',
         'views/aquarium_menu.xml'
         
     ]

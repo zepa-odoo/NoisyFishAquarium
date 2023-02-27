@@ -100,7 +100,7 @@
                                 <group string="Type of Product">
                                     <!-- no_quick_create : use to disable create new record option
                                          no_create_edit : use to disable create and edit record option -->
-                                    <field name="product_category_id" options="{'no_quick_create': True,'no_create_edit':True}"/>
+                                    <field name="product_category_accessories_id" options="{'no_quick_create': True,'no_create_edit':True}"/>
                                 </group>
                                 <group string="Dimension of Product">
                                     <field name="product_weight"/>
@@ -112,14 +112,14 @@
                         <page string="Natural" attrs="{'invisible':[('product_category','in', 'artificial_product')]}">
                             <group>
                                 <group>
-                                    <field name="product_fish_category_id" />
-                                    <field name="product_fish_food_id" options="{'no_quick_create': True,'no_create_edit':True}"/>
+                                    <field name="product_category_fish_id" />
+                                    <field name="product_category_food_id" options="{'no_quick_create': True,'no_create_edit':True}"/>
                                     
                                 </group>
                                 <group>
                                     <field name="product_fish_lifespan"/>
                                     <field name="product_fish_size"/>
-                                    <field name="product_suitable_fish_ids" widget="many2many_tags"/>
+                                    <field name="product_category_compatible_fish_id" widget="many2many_tags"/>
                                 </group>
                                 
                             </group>
@@ -130,6 +130,13 @@
                                 <group>
                                     <field name="product_fish_water_ids" widget="many2many_tags"/>
                                 </group>
+                            </group>
+                        </page>
+                        <page string="filter page">
+                            <group>
+                                <field name="product_category_fish_id"/>
+                                <field name="product_category_food_id"/>
+                                <field name="product_category_accessories_id"/>
                             </group>
                         </page>
                     </notebook>
@@ -154,8 +161,8 @@
                 <field name="product_fish_lifespan"/>
                 <field name="product_fish_size"/>
                 <field name="product_fish_water_ids"/>
-                <field name="product_fish_category_id"/>                    
-                <field name="product_fish_food_id"/>
+                <field name="product_category_fish_id"/>                    
+                <field name="product_category_food_id"/>
                 <field name="product_fish_medicine_ids"/>
                 <filter name="product_category" string="Artificial Product" domain="[('product_category','=','artificial_product')]"/>
                 <filter name="product_category" string="Natural Product" domain="[('product_category','=','natural_product')]"/>
@@ -168,7 +175,7 @@
                     <filter name="product_quantity" string="Product Quantity" context="{'group_by':'product_quantity'}"/>
                 </group>
                 <group>
-                    <filter name="product_category_id" string="Artificial Product Category" context="{'group_by':'product_category_id'}"/>
+                    <filter name="product_category_id" string="Artificial Product Category" context="{'group_by':'product_category_accessories_id'}"/>
                 </group>
                 <group>
                     <filter name="product_weight" string="Product Weight" context="{'group_by':'product_weight'}"/>
@@ -182,8 +189,8 @@
                     <filter name="product_fish_water_ids" string="Water type" context="{'group_by':'product_fish_water_ids'}"/>
                 </group>
                 <group>
-                    <filter name="product_fish_category_id" string="Fish Type" context="{'group_by':'product_fish_category_id'}"/>
-                    <filter name="product_fish_food_id" string="Fish Food" context="{'group_by':'product_fish_food_id'}"/>
+                    <filter name="product_category_accessories_id" string="Fish Type" context="{'group_by':'product_category_fish_id'}"/>
+                    <filter name="product_category_food_id" string="Fish Food" context="{'group_by':'product_category_food_id'}"/>
                     <filter name="product_fish_medicine_ids" string="Medicines" context="{'group_by':'product_fish_medicine_ids'}"/>
                     <filter name="product_fish_lifespan" string="Fish Maximum Age" context="{'group_by':'product_fish_lifespan'}"/>
                     <filter name="product_fish_size" string="Fish Size" context="{'group_by':'product_fish_size'}"/>

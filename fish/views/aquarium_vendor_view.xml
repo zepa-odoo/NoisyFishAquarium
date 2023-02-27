@@ -31,6 +31,10 @@
                     <h1>
                         <field name="company_id"/>
                     </h1>
+                    <group string="Company Details">
+                        <field name="phone_no"/>
+                        <field name="email"/>
+                    </group>
                     <group string="Manifecturing Details">
                         <field name="product_production_type" widget="radio"/>
                     </group>
@@ -38,6 +42,7 @@
                         <field name="company_year"/>
                         <field name="experiance"/>
                     </group>
+
 
                 </sheet>
             </form>
