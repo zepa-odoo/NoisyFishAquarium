@@ -8,8 +8,19 @@ class AquariumVendor(models.Model):
 
     company_id = fields.Many2one("res.company")
 
-    phone_no= fields.Char(string="Contact No(M)", related = "company_id.phone", store=True)
-    email = fields.Char(string="Email", related = "company_id.email", store=True)
+    phone_no= fields.Char(string="Contact No(M)", related = "company_id.phone", store=True, readonly=False)
+    email = fields.Char(string="Email", related = "company_id.email", store=True, readonly=False)
+    website = fields.Char(string="Website", related = "company_id.website", store=True, readonly=False)
+
+    street = fields.Char(string="Address", related = "company_id.street", store=True, readonly=False)
+    street_2 = fields.Char (related = "company_id.street2", store=True, readonly=False)
+    city = fields.Char(related = "company_id.city", store=True, readonly=False)
+    zip = fields.Char(related = "company_id.zip", store=True, readonly=False)
+    state_id = fields.Many2one( related = "company_id.state_id", store=True, readonly=False)
+    country_id = fields.Many2one( related = "company_id.country_id", store=True, readonly=False)
+    logo = fields.Binary(related = "company_id.logo", readonly=False)
+    company_details = fields.Html(string ="Company Details", related = "company_id.company_details", readonly=False )
+
 
     product_production_type = fields.Selection(
         string = "Production Type",

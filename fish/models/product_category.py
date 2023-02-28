@@ -6,6 +6,7 @@ class ProductCategory(models.Model):
 
     main_category = fields.Char(string = " Category ")
     sub_category = fields.Char(string = "Sub Category")
+    
 
     _sql_constraints = [
         (

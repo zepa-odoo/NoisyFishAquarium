@@ -30,7 +30,7 @@
                             <field name="name" nolabel="1"/>
 
                         </h1>
-                        <div style="position: absolute;right: 40px;top:15px">
+                        <div style="position: absolute;right: 25px;top:60px">
                             <field name="product_img" widget="image" class="oe_right oe_avatar" nolabel="1"/>
                         </div>
 

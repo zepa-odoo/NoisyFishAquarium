@@ -19,6 +19,8 @@
         'views/product_color_view.xml',
         'views/aquarium_vendor_view.xml',
         'views/product_category.xml',
+        'views/delegation_child_view.xml',
+        'views/delegation_parent_view.xml',
         'views/aquarium_menu.xml'
         
     ]

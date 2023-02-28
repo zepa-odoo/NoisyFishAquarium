@@ -8,3 +8,4 @@ from . import product_category_water
 from . import product_color
 from . import aquarium_vendor
 from . import product_category
+from . import delegation_parent,delegation_child

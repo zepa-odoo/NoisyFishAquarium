@@ -27,12 +27,20 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <div name="button_box">
+                        <button name="%(fish.aquarium_product_action)d" type="action"  icon="fa-money" >
+                            <field name="product_count"/>
+                            Products
+                        </button>
+                    
+                    </div>
                     <label for="name" string="Water Type"/>
                     <h1><field name="name"/></h1>
                     <label for="name" string="Water PH"/>
                     <h1><field name="water_ph"/></h1>
                     <label for="name" string="Water Temperature"/>
                     <h1><field name="water_temperature"/></h1>
+                    
                 </sheet>
             </form>
         </field>

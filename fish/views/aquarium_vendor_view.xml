@@ -29,16 +29,38 @@
                 <sheet>
                     <label for="company_id"/>
                     <h1>
-                        <field name="company_id"/>
+                        <!-- no_open : true means it disable internal link -->
+                        <field name="company_id" options='{"no_open": True}'/>
                     </h1>
-                    <group string="Company Details">
-                        <field name="phone_no"/>
-                        <field name="email"/>
+                    <div style="position: absolute;right: 40px;top:15px">
+                        <field name="logo" widget="image" class="oe_right oe_avatar" nolabel="1"/>
+                    </div>
+                    
+                    <group string="Contact Details">
+                        <group>
+                            <field name="phone_no"/>
+                            <field name="email"/>
+                            <field name="website"/>
+                        </group>
+                        <group >
+                            <label for="street"/>
+                            <div class="oe_address_format">
+                                <field name="street" placeholder="Street..." nolabel="1"/>
+                                <field name="street_2" placeholder="Street 2..."  nolabel="1" />
+                                <field name="state_id" placeholder="State"  nolabel="1"/>
+                                <field name="city" placeholder="City"  nolabel="1"/>
+                                <field name="country_id" placeholder="Country"  nolabel="1"/>
+                                <field name="zip" placeholder="ZIP"  nolabel="1"/>
+                            </div>
+                            
+                        </group>
                     </group>
+                    
                     <group string="Manifecturing Details">
                         <field name="product_production_type" widget="radio"/>
                     </group>
                     <group string="Foundation Details">
+                        <field name="company_details"/> 
                         <field name="company_year"/>
                         <field name="experiance"/>
                     </group>

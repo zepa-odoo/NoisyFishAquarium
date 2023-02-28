@@ -9,3 +9,5 @@ fish.access_product_category_water,access_product_category_water,fish.model_prod
 fish.access_product_color,access_product_color,fish.model_product_color,base.group_user,1,1,1,1
 fish.access_aquarium_vendor,access_aquarium_vendor,fish.model_aquarium_vendor,base.group_user,1,1,1,1
 fish.access_product_category,access_product_category,fish.model_product_category,base.group_user,1,1,1,1
+fish.access_delegation_parent,access_delegation_parent,fish.model_delegation_parent,base.group_user,1,1,1,1
+fish.access_delegation_child,access_delegation_child,fish.model_delegation_child,base.group_user,1,1,1,1

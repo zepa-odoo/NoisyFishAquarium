@@ -13,7 +13,7 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="partner_id">
+                        <field name="name">
                         </field>
                     </group>
                     <group>
@@ -54,7 +54,7 @@
             <tree decoration-danger = "user_role == 'expert'"
                   decoration-info = "user_role == 'employee'"
                   decoration-muted = "user_role == 'customer'" >
-                <field name="partner_id" string="Name"/>
+                <field name="name" string="Name"/>
                 
                 <!-- <field name="profile_img" widget="image"/> -->
                 <field name="user_role" />

@@ -17,5 +17,9 @@
         </menuitem>
         <menuitem id = "aquarium_vendor_menu" name = "Vendor" action="aquarium_vendor_action" />
 
+        <menuitem id="demo_menu" name="Demo">
+            <menuitem id="delegation_parent_action_menuc" name="Parent" action="delegation_parent_action"/>
+            <menuitem id="delegation_child_action_menuc" name="Child" action="delegation_child_action"/>
+        </menuitem>
     </menuitem>
 </odoo>

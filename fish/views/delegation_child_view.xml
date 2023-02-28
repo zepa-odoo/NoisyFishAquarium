@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="delegation_child_action" model="ir.actions.act_window">
+        <field name="name">Delegation Child</field>
+        <field name="res_model">delegation.child</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a record
+            </p>
+        </field>
+    </record>
+    <record id="delegation_child_tree_view" model="ir.ui.view">
+        <field name="name">Delegation Child</field>
+        <field name="model">delegation.child</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="color"/>
+                <field name="location"/>
+            </tree>
+        </field>
+    </record>
+    <record id="delegation_child_form_view" model="ir.ui.view">
+        <field name="name">Delegation Child</field>
+        <field name="model">delegation.child</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <label for="name" string="Name"/>
+                    <h1><field name="name"/></h1>
+                    <group>
+                        <field name="delegation_parent_id" string="ids of parent"/>
+                        <field name="color"/>
+                        <field name="location"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

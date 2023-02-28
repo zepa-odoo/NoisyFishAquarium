@@ -42,8 +42,8 @@ class ProductAquarium(models.Model):
 
     product_category_fish_id = fields.Many2one('product.category',string="fish category", domain = "[('main_category','=','fish')]")
     product_category_food_id = fields.Many2one('product.category',string="food category",  domain = "[('main_category','=','food')]")
-    product_fish_medicine_ids  = fields.One2many('product.category.medicine','product_aquarium_ids',string = "Fish Medicine Category")
-    product_fish_water_ids  = fields.Many2many('product.category.water',string = "Water Type")
+    product_fish_medicine_ids  = fields.Many2one('product.category.medicine',string = "Fish Medicine Category")
+    product_fish_water_ids  = fields.One2many('product.category.water','product_aquarium_id',string = "Water Type")
     product_fish_lifespan  = fields.Integer(string = "Life Line")
     product_fish_size = fields.Integer(string = "Fish Size")
     product_category_compatible_fish_id = fields.Many2many("product.category", string="Compatible Fishes", domain = "[('main_category','=','fish')]", compute="_compute_product_suitable_fish_ids", readonly=False)

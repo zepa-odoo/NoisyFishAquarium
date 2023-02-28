@@ -5,9 +5,11 @@ class ProductCategoryWater(models.Model):
     _description = "water category"
     
 
-    name = fields.Char(required=True,string="Type", compute="_compute_name",store=True)
+    name = fields.Char(required=True,string="Type", compute="_compute_name",readonly=False,store=True)
     water_ph = fields.Float(string="PH") # 0 -14 range
     water_temperature = fields.Float(string="Temperature")
+    product_aquarium_id = fields.Many2one('product.aquarium', string="Product")
+    product_count = fields.Integer(compute = "_compute_product_count")
 
     _sql_constraints = [
         (
@@ -22,6 +24,11 @@ class ProductCategoryWater(models.Model):
     def _compute_name(self):
         for record in self:
             record.name = record.name.title()
+
+    def _compute_product_count(self):
+        for record in self:
+            record.product_count= len(record.product_aquarium_id)
+
     
     def name_get(self):
         result = []

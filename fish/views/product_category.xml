@@ -26,6 +26,7 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    
                     <label for="main_category"/>
                     <h1><field name="main_category"/></h1>
                     <group>
