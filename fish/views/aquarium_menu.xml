@@ -13,7 +13,7 @@
 
         <menuitem id="aquarium_product_menu" name="Product">
             <menuitem id="product_action" name="Product" action="aquarium_product_action"/>
-            <menuitem id="product_category_action" name="Product Catgegory" action="aquarium_category_action"/>
+            <!-- <menuitem id="product_category_action" name="Product Catgegory" action="aquarium_category_action"/> -->
         </menuitem>
         <menuitem id = "aquarium_vendor_menu" name = "Vendor" action="aquarium_vendor_action" />
 

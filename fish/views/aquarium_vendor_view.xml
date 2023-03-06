@@ -27,12 +27,17 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <div name="button_box">
+                        <button name="%(fish.active_aquarium_product_action)d" type="action"  icon="fa-money" >
+                            <field name="product_count" widget="statinfo" string="Products"/>
+                        </button>
+                    </div>
                     <label for="company_id"/>
                     <h1>
                         <!-- no_open : true means it disable internal link -->
                         <field name="company_id" options='{"no_open": True}'/>
                     </h1>
-                    <div style="position: absolute;right: 40px;top:15px">
+                    <div style="position: absolute;right: 40px;top:75px">
                         <field name="logo" widget="image" class="oe_right oe_avatar" nolabel="1"/>
                     </div>
                     
@@ -64,7 +69,11 @@
                         <field name="company_year"/>
                         <field name="experiance"/>
                     </group>
-
+                    <!-- <notebook>
+                        <page string="Product">
+                            <field name="product_ids" />
+                        </page>
+                    </notebook> -->
 
                 </sheet>
             </form>

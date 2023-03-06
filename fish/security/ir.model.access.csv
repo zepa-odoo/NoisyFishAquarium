@@ -1,5 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-fish.access_aquarium_user,access_aquarium_user,fish.model_aquarium_user,base.group_user,1,1,1,1
 fish.access_product_aquarium,access_product_aquarium,fish.model_product_aquarium,base.group_user,1,1,1,1
 fish.access_product_category_accessories,access_product_category_accessories,fish.model_product_category_accessories,base.group_user,1,1,1,1
 fish.access_product_category_fish,access_product_category_fish,fish.model_product_category_fish,base.group_user,1,1,1,1

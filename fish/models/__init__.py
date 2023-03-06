@@ -1,4 +1,4 @@
-from . import aquarium_user
+from . import res_users
 from . import product_aquarium
 from . import product_category_accessories
 from . import product_category_fish

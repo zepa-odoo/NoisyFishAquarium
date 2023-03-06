@@ -1,12 +1,10 @@
 from odoo import models, fields
 
-class AquariumUser(models.Model):
-    _name = "aquarium.user"
+class ResUsers(models.Model):
+    # _name = "aquarium.users"
     _description = "Type of user aquarium"
-    _inherit = ["res.partner"]
-    _rec_name = "name"
-
-    
+    _inherit = "res.users"
+    _rec_name = "name"  
 
     user_role = fields.Selection(
         string = "User Type",

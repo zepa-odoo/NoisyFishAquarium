@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Food Category -->
+        <record id="food_1" model="product.category.food">
+            <field name="name">Meat</field>
+        </record>
+        <record id="food_2" model="product.category.food">
+            <field name="name">Vegetarians</field>
+        </record>
+        <record id="food_3" model="product.category.food">
+            <field name="name">Meat and Vegetarians</field>
+        </record>
+
+        <!-- fish Category -->
+        <record id="fish_1" model="product.category.fish">
+            <field name="name">Goldfish</field>
+        </record>
+        <record id="fish_2" model="product.category.fish">
+            <field name="name">Koi</field>
+        </record>
+        <record id="fish_3" model="product.category.fish">
+            <field name="name">tetra</field>
+        </record>
+        <record id="fish_4" model="product.category.fish">
+            <field name="name">Angel</field>
+        </record>
+        <record id="fish_5" model="product.category.fish">
+            <field name="name">shark</field>
+        </record>
+        <record id="fish_6" model="product.category.fish">
+            <field name="name">Guppe</field>
+        </record>
+
+        <!-- accessories category-->
+        <record id="accessories_0" model="product.category.accessories">
+            <field name="name">acquarium</field>
+        </record>
+        <record id="accessories_1" model="product.category.accessories">
+            <field name="name">net</field>
+        </record>
+        <record id="accessories_2" model="product.category.accessories">
+            <field name="name">heater</field>
+        </record>
+        <record id="accessories_3" model="product.category.accessories">
+            <field name="name">rock</field>
+        </record>
+        <record id="accessories_4" model="product.category.accessories">
+            <field name="name">sand</field>
+        </record>
+        <record id="accessories_5" model="product.category.accessories">
+            <field name="name">filter</field>
+        </record>
+        <record id="accessories_6" model="product.category.accessories">
+            <field name="name">pump</field>
+        </record>
+        <record id="accessories_7" model="product.category.accessories">
+            <field name="name">show pics</field>
+        </record>
+        
+    </data>
+</odoo>

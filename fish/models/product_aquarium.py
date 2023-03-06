@@ -19,8 +19,7 @@ class ProductAquarium(models.Model):
         string = "status",
         selection = [('new','New'),('farm','In Farm'),('warehouse','Ware House'),('available','Available'),('sold','Sold'),('live','Live'),('dead','Dead')],
         help  = "Select production stage",
-        default="new"
-        
+        default="new",
         )
     
     aquairum_vendor_id = fields.Many2one(
@@ -40,13 +39,13 @@ class ProductAquarium(models.Model):
     product_img = fields.Image(required=True, string="Product Image", max_width=70, max_height=70)
     product_color_ids = fields.Many2many('product.color',string="Color")
 
-    product_category_fish_id = fields.Many2one('product.category',string="fish category", domain = "[('main_category','=','fish')]")
-    product_category_food_id = fields.Many2one('product.category',string="food category",  domain = "[('main_category','=','food')]")
-    product_fish_medicine_ids  = fields.Many2one('product.category.medicine',string = "Fish Medicine Category")
-    product_fish_water_ids  = fields.One2many('product.category.water','product_aquarium_id',string = "Water Type")
+    product_category_fish_id = fields.Many2one('product.category.fish',string="fish category")
+    product_category_food_id = fields.Many2one('product.category.food',string="food category")
+    product_fish_medicine_ids  = fields.Many2many('product.category.medicine',string = "Fish Medicine Category")
+    product_fish_water_ids  = fields.Many2many('product.category.water',string = "Water Type")
     product_fish_lifespan  = fields.Integer(string = "Life Line")
     product_fish_size = fields.Integer(string = "Fish Size")
-    product_category_compatible_fish_id = fields.Many2many("product.category", string="Compatible Fishes", domain = "[('main_category','=','fish')]", compute="_compute_product_suitable_fish_ids", readonly=False)
+    product_category_compatible_fish_id = fields.Many2many("product.category.fish", string="Compatible Fishes", readonly=False)
 
     _sql_constraints = [
         (
@@ -56,15 +55,19 @@ class ProductAquarium(models.Model):
         )
     ]
 
-    @api.depends('product_category_fish_id')
-    def _compute_product_suitable_fish_ids(self):
-        for record in self:
-            record.product_category_compatible_fish_id = record.product_category_fish_id
-
     @api.constrains('product_quantity')
     def _check_selling_price(self):
         if (self.product_quantity<0):
             raise ValidationError('product quantity can not be negative ')
+        
+    def _compute_state(self):
+        for record in self:
+            if(record.state == "live"):
+                if (self.product_quantity<0):
+                    record.state = 'dead'
+                else:
+                    record.product_description = "Ready to shipping"
+
     
     def action_statusbar_new(self):
         for record in self:

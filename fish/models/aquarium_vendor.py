@@ -20,7 +20,8 @@ class AquariumVendor(models.Model):
     country_id = fields.Many2one( related = "company_id.country_id", store=True, readonly=False)
     logo = fields.Binary(related = "company_id.logo", readonly=False)
     company_details = fields.Html(string ="Company Details", related = "company_id.company_details", readonly=False )
-
+    product_ids = fields.One2many('product.aquarium','aquairum_vendor_id')
+    product_count = fields.Integer(compute="_compute_product_count")
 
     product_production_type = fields.Selection(
         string = "Production Type",
@@ -30,7 +31,7 @@ class AquariumVendor(models.Model):
     company_year=fields.Selection(selection='years_selection',
         string="Foundation Year")
     
-    experiance = fields.Integer(string="Experiance",compute="_compute_experiance", store=True)
+    experiance = fields.Integer(string="Experiance",default=0,compute="_compute_experiance", store=True)
 
     def years_selection(self):
         year_list=[]
@@ -42,6 +43,11 @@ class AquariumVendor(models.Model):
     def _compute_experiance(self):
         for record in self:
             if record.create_date:
-                record.experiance = fields.date.today().year-int(record.company_year)
-            else:
-                record.experiance=0
+                if (record.company_year):
+                    record.experiance = fields.date.today().year-int(record.company_year)
+            
+
+    @api.depends('product_ids')
+    def _compute_product_count(self):
+        for record in self:
+            record.product_count=len(record.product_ids)

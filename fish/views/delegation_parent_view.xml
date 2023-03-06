@@ -29,10 +29,14 @@
                 <sheet>
                     <label for="name" string="Name"/>
                     <h1><field name="name"/></h1>
-                    <group>
-                        <field name="details"/>
-                        <field name="age"/>
-                    </group>
+                    <notebook>
+                        <page string="parent">
+                            <group string="parent">
+                                <field name="details"/>
+                                <field name="age"/>
+                            </group>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
